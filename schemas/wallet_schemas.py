@@ -5,8 +5,12 @@ from pydantic.generics import GenericModel
 T = TypeVar('T')
 
 
+class CreateRequestCurrency(BaseModel):
+    name: str
+
+
 class CreateRequestWallet(BaseModel):
-    currency: Optional[str | None] = None
+    currency_id: Optional[int | None] = None
     amount: Optional[float| None] = None
 
 
