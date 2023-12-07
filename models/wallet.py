@@ -20,5 +20,16 @@ class Currency(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
+    code = Column(String)
     # wallets = relationship("Wallet", back_populates="wallets")
 
+
+
+class ExchangeTransaction(Base):
+    __tablename__ = "exchange_transactions"
+    id = Column(Integer, primary_key=True, index=True)
+
+    source = Column(Integer, ForeignKey("wallets.id"))
+    target = Column(Integer, ForeignKey("wallets.id"))
+    amount = Column(Float)
+    rate = Column(Float)
